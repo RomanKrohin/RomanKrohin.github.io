@@ -262,12 +262,14 @@ var Cafe = {
       Cafe.toggleLoading(true);
       Cafe.apiRequest('makeOrder', params, function(result) {
         Cafe.toggleLoading(false);
-        if (result.ok) {
-          Telegram.WebApp.close();
-        }
-        if (result.error) {
-          Cafe.showStatus(result.error);
-        }
+        Telegram.WebApp.close();
+        
+        // if (result.ok) {
+        //   Telegram.WebApp.close();
+        // }
+        // if (result.error) {
+        //   Cafe.showStatus(result.error);
+        // }
       });
     } else {
       Cafe.toggleMode(true);
