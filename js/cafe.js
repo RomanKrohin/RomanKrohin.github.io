@@ -299,8 +299,8 @@ var Cafe = {
       success: function(result) {
         onCallback && onCallback({ ok: true });
       },
-      error: function(xhr) {
-        onCallback && onCallback({error: 'Server error'});
+      error: function(xhr, textStatus) {
+        onCallback && onCallback({error: 'Server error' + textStatus});
       }
     });
   }
