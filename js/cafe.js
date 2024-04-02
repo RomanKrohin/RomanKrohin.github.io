@@ -297,7 +297,7 @@ var Cafe = {
         withCredentials: true
       },
       success: function(result) {
-        onCallback && onCallback(result);
+        onCallback && onCallback({ ok: true });
       },
       error: function(xhr) {
         onCallback && onCallback({error: 'Server error'});
