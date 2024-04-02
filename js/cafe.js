@@ -300,7 +300,7 @@ var Cafe = {
         onCallback && onCallback({ ok: true });
       },
       error: function(xhr, textStatus) {
-        onCallback && onCallback({error: 'Server error' + textStatus});
+        onCallback && onCallback({error: 'Error' + textStatus});
       }
     });
   }
