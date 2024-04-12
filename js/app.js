@@ -73,4 +73,59 @@ function handleMinusButtonClick(item) {
 }
 
 // Добавление обработчиков событий для кнопок Add каждого товара
-document
+document.getElementById("btn1").addEventListener("click", function() {
+    handleAddButtonClick(1);
+});
+document.getElementById("btn2").addEventListener("click", function() {
+    handleAddButtonClick(2);
+});
+document.getElementById("btn3").addEventListener("click", function() {
+    handleAddButtonClick(3);
+});
+document.getElementById("btn4").addEventListener("click", function() {
+    handleAddButtonClick(4);
+});
+document.getElementById("btn5").addEventListener("click", function() {
+    handleAddButtonClick(5);
+});
+document.getElementById("btn6").addEventListener("click", function() {
+    handleAddButtonClick(6);
+});
+
+// Добавление обработчиков событий для кнопок плюс и минус каждого товара
+document.getElementById("plus1").addEventListener("click", function() {
+    handlePlusButtonClick(1);
+});
+document.getElementById("minus1").addEventListener("click", function() {
+    handleMinusButtonClick(1);
+});
+document.getElementById("plus2").addEventListener("click", function() {
+    handlePlusButtonClick(2);
+});
+document.getElementById("minus2").addEventListener("click", function() {
+    handleMinusButtonClick(2);
+});
+document.getElementById("plus3").addEventListener("click", function() {
+    handlePlusButtonClick(3);
+});
+document.getElementById("minus3").addEventListener("click", function() {
+    handleMinusButtonClick(3);
+});
+document.getElementById("plus4").addEventListener("click", function() {
+    handlePlusButtonClick(4);
+});
+document.getElementById("minus4").addEventListener("click", function() {
+    handleMinusButtonClick(4);
+});
+document.getElementById("plus5").addEventListener("click", function() {
+    handlePlusButtonClick(5);
+});
+document.getElementById("minus5").addEventListener("click", function() {
+    handleMinusButtonClick(5);
+});
+document.getElementById("plus6").addEventListener("click", function() {
+    handlePlusButtonClick(6);
+});
+document.getElementById("minus6").addEventListener("click", function() {
+    handleMinusButtonClick(6);
+});
