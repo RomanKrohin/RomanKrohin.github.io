@@ -39,7 +39,7 @@ btn1.addEventListener("click", function () {
             if (all_cost[0] > 0) {
                 all_cost[0]--;
                 updateQuantity(0, all_cost[0]); // Обновляем количество товара
-                tg.MainButton.setText(all_cost[0] * 10);
+                tg.MainButton.setText(all_cost[0] * 1230);
             }
         });
 
