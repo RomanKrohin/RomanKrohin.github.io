@@ -28,13 +28,13 @@ btn1.addEventListener("click", function () {
         minusButton.addEventListener("click", function () {
             if (all_cost[0] > 0) {
                 all_cost[0]--;
-				
+				q1.innerText=all_cost[0]
                 tg.MainButton.setText(all_cost[0] * 10);
             }
         });
 
         let addButton = document.getElementById(`btn${item}`);
-		if (m1 && all_cost[0]>0){
+		if (!m1 && all_cost[0]>0){
 			m1 = true
 			addButton.insertAdjacentElement('afterend', minusButton);
 		}
