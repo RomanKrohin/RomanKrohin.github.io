@@ -1,150 +1,76 @@
-let tg = window.Telegram.WebApp;
+// Функция для отправки данных о выбранном товаре в Telegram
+function sendData(item) {
+    // Ваш код для отправки данных в Telegram
+    console.log(`Выбран товар: ${item}`);
+}
 
-tg.expand();
+// Функция для обработки нажатия кнопки Add для товара
+function handleAddButtonClick(item) {
+    // Получение элемента с количеством товаров для данного элемента
+    let quantityElement = document.querySelector(`#btn${item}`).nextElementSibling;
 
-tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
+    // Получение текущего количества товаров
+    let currentQuantity = parseInt(quantityElement.innerText);
 
-let item = "";
+    // Увеличение количества товаров на 1
+    let newQuantity = currentQuantity + 1;
 
-let btn1 = document.getElementById("btn1");
-let btn2 = document.getElementById("btn2");
-let btn3 = document.getElementById("btn3");
-let btn4 = document.getElementById("btn4");
-let btn5 = document.getElementById("btn5");
-let btn6 = document.getElementById("btn6");
+    // Обновление отображаемого количества товаров
+    quantityElement.innerText = newQuantity;
 
-btn1.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 1!");
-		item = "1";
-		tg.MainButton.show();
-	}
-});
+    // Показывать кнопки плюс и минус только если количество товаров больше нуля
+    if (newQuantity > 0) {
+        document.querySelector(`#btn${item}`).classList.add("hidden");
+        document.querySelector(`#plus${item}`).classList.remove("hidden");
+        document.querySelector(`#minus${item}`).classList.remove("hidden");
+    }
 
-btn2.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 2!");
-		item = "2";
-		tg.MainButton.show();
-	}
-});
+    // Отправка данных о выбранном товаре в Telegram
+    sendData(item);
+}
 
-btn3.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 3!");
-		item = "3";
-		tg.MainButton.show();
-	}
-});
+// Функция для обработки нажатия кнопки плюс для товара
+function handlePlusButtonClick(item) {
+    // Получение элемента с количеством товаров для данного элемента
+    let quantityElement = document.querySelector(`#btn${item}`).nextElementSibling;
 
-btn4.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 4!");
-		item = "4";
-		tg.MainButton.show();
-	}
-});
+    // Получение текущего количества товаров
+    let currentQuantity = parseInt(quantityElement.innerText);
 
-btn5.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 5!");
-		item = "5";
-		tg.MainButton.show();
-	}
-});
+    // Увеличение количества товаров на 1
+    let newQuantity = currentQuantity + 1;
 
-btn6.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 6!");
-		item = "6";
-		tg.MainButton.show();
-	}
-});
+    // Обновление отображаемого количества товаров
+    quantityElement.innerText = newQuantity;
 
+    // Отправка данных о выбранном товаре в Telegram
+    sendData(item);
+}
 
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	tg.sendData(item);
-});
+// Функция для обработки нажатия кнопки минус для товара
+function handleMinusButtonClick(item) {
+    // Получение элемента с количеством товаров для данного элемента
+    let quantityElement = document.querySelector(`#btn${item}`).nextElementSibling;
 
+    // Получение текущего количества товаров
+    let currentQuantity = parseInt(quantityElement.innerText);
 
-let usercard = document.getElementById("usercard");
+    // Уменьшение количества товаров на 1, но не меньше нуля
+    let newQuantity = Math.max(0, currentQuantity - 1);
 
-let p = document.createElement("p");
+    // Обновление отображаемого количества товаров
+    quantityElement.innerText = newQuantity;
 
-p.innerText = `${tg.initDataUnsafe.user.first_name}
-${tg.initDataUnsafe.user.last_name}`;
+    // Скрытие кнопок плюс и минус, если количество товаров равно нулю
+    if (newQuantity === 0) {
+        document.querySelector(`#btn${item}`).classList.remove("hidden");
+        document.querySelector(`#plus${item}`).classList.add("hidden");
+        document.querySelector(`#minus${item}`).classList.add("hidden");
+    }
 
-usercard.appendChild(p);
+    // Отправка данных о выбранном товаре в Telegram
+    sendData(item);
+}
 
-// Добавляем обработчик события для каждой кнопки "Add"
-let addButtons = document.querySelectorAll(".btn");
-addButtons.forEach(function(button, index) {
-    let quantityElement = document.getElementById(`quantity${index + 1}`);
-    let quantity = 0; // Изначальное количество товара
-
-    button.addEventListener("click", function() {
-        // При нажатии увеличиваем количество товара на 1
-        quantity++;
-        // Обновляем отображение количества товара
-        quantityElement.innerText = quantity;
-
-        // Создаем кнопку "+"
-        let plusButton = document.createElement("button");
-        plusButton.innerText = "+";
-        plusButton.classList.add("btn");
-        plusButton.classList.add("plus");
-        plusButton.classList.add("btn-animate"); // Анимация
-        plusButton.classList.add("show"); // Показываем кнопку с анимацией
-        plusButton.addEventListener("click", function() {
-            // При нажатии на кнопку "+" увеличиваем количество товара на 1
-            quantity++;
-            // Обновляем отображение количества товара
-            quantityElement.innerText = quantity;
-        });
-
-        // Создаем кнопку "-"
-        let minusButton = document.createElement("button");
-        minusButton.innerText = "-";
-        minusButton.classList.add("btn");
-        minusButton.classList.add("minus");
-        minusButton.classList.add("btn-animate"); // Анимация
-        minusButton.classList.add("show"); // Показываем кнопку с анимацией
-        minusButton.addEventListener("click", function() {
-            // При нажатии на кнопку "-" уменьшаем количество товара на 1, если оно больше 0
-            if (quantity > 0) {
-                quantity--;
-                // Обновляем отображение количества товара
-                quantityElement.innerText = quantity;
-            }
-
-            // Если количество стало равным 0, скрываем кнопки "+", "-"
-            if (quantity === 0) {
-                plusButton.classList.remove("show");
-                minusButton.classList.remove("show");
-            }
-        });
-
-        // Добавляем кнопки "+" и "-" к элементу с товаром
-        button.parentNode.appendChild(plusButton);
-        button.parentNode.appendChild(minusButton);
-    });
-});
+// Добавление обработчиков событий для кнопок Add каждого товара
+document

@@ -33,7 +33,7 @@ addButtons.forEach(function(button, index) {
         minusButton.classList.add("show"); // Показываем кнопку с анимацией
         minusButton.addEventListener("click", function() {
             // При нажатии на кнопку "-" уменьшаем количество товара на 1, если оно больше 0
-            if (quantity > 0) {
+            if (quantity > 0) {ц
                 quantity--;
                 // Обновляем отображение количества товара
                 quantityElement.innerText = quantity;
