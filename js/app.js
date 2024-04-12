@@ -10,6 +10,7 @@ let q1 = document.getElementById(quantity1)
 let item = "";
 
 let btn1 = document.getElementById("btn1");
+let m1 = false
 
 btn1.addEventListener("click", function () {
     if (tg.MainButton.isVisible) {
@@ -30,11 +31,14 @@ btn1.addEventListener("click", function () {
 				
                 tg.MainButton.setText(all_cost[0] * 10);
             }
-        });
+        });w
 
         let addButton = document.getElementById(`btn${item}`);
+		if (m1 && all_cost[0]>0){
+			m1 = true
+			addButton.insertAdjacentElement('afterend', minusButton);
+		}
 
-        addButton.insertAdjacentElement('afterend', minusButton);
         tg.MainButton.show();
     }
 });
