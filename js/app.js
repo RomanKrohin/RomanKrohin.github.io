@@ -1,77 +1,78 @@
+let tg = window.Telegram.WebApp;
 
-    let tg = window.Telegram.WebApp;
+let all_cost = [0, 0, 0, 0, 0, 0];
 
-    let all_cost = [0, 0, 0, 0, 0, 0];
+tg.expand();
 
-    tg.expand();
+tg.MainButton.textColor = '#FFFFFF';
+tg.MainButton.color = '#2cab37';
+let q1 = document.getElementById("quantity1");
+let item = "";
 
-    tg.MainButton.textColor = '#FFFFFF';
-    tg.MainButton.color = '#2cab37';
+let btn1 = document.getElementById("btn1");
 
-    let item = "";
+btn1.addEventListener("click", function () {
+    if (tg.MainButton.isVisible) {
+        tg.MainButton.hide();
+    } else {
+        all_cost[0] = all_cost[0] + 1;
 
-    let plusButton = document.createElement("button");
-    plusButton.innerText = "+";
-    plusButton.classList.add("btn");
-    plusButton.classList.add("plus");
-    plusButton.addEventListener("click", function () {
-        all_cost[0]++;
         tg.MainButton.setText(all_cost[0] * 10);
-        updateQuantityDisplay();
-    });
-
-    let minusButton = document.createElement("button");
-    minusButton.innerText = "-";
-    minusButton.classList.add("btn");
-    minusButton.classList.add("minus");
-    minusButton.addEventListener("click", function () {
-        if (all_cost[0] > 0) {
-            all_cost[0]--;
-            tg.MainButton.setText(all_cost[0] * 10);
-            updateQuantityDisplay();
-        }
-    });
-
-    let usercard = document.getElementById("usercard");
-    let q1 = document.getElementById("quantity1");
-
-    function updateQuantityDisplay() {
-        q1.innerText = all_cost[0];
-    }
-
-    let btn1 = document.getElementById("btn1");
-
-    btn1.addEventListener("click", function () {
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
-        } else {
+        item = "1";
+        let plusButton = document.createElement("button");
+        plusButton.innerText = "+";
+        plusButton.classList.add("btn");
+        plusButton.classList.add("plus");
+        plusButton.addEventListener("click", function () {
             all_cost[0]++;
+            q1.innerText = all_cost[0];
             tg.MainButton.setText(all_cost[0] * 10);
-            updateQuantityDisplay();
-            showPlusMinusButtons();
-            tg.MainButton.show();
-        }
-    });
+        });
 
-    function showPlusMinusButtons() {
-        btn1.style.display = "none";
-        plusButton.style.display = "inline-block";
-        minusButton.style.display = "inline-block";
+        let minusButton = document.createElement("button");
+        minusButton.innerText = "-";
+        minusButton.classList.add("btn");
+        minusButton.classList.add("minus");
+        minusButton.addEventListener("click", function () {
+            if (all_cost[0] > 0) {
+                all_cost[0]--;
+                q1.innerText = all_cost[0];
+                tg.MainButton.setText(all_cost[0] * 10);
+            }
+        });
+
+        let addButton = document.getElementById(`btn${item}`);
+        addButton.insertAdjacentElement('afterend', plusButton);
+        addButton.insertAdjacentElement('afterend', minusButton);
+        tg.MainButton.show();
     }
+});
 
-    function showAddButton() {
-        btn1.style.display = "inline-block";
-        plusButton.style.display = "none";
-        minusButton.style.display = "none";
+function showAddButton() {
+    btn1.style.display = "inline-block";
+}
+
+function showPlusMinusButtons() {
+    btn1.style.display = "none";
+}
+
+// Проверка количества товаров при загрузке страницы
+window.addEventListener('DOMContentLoaded', function () {
+    if (all_cost[0] === 0) {
+        showAddButton();
+    } else {
+        showPlusMinusButtons();
     }
+});
 
-    let p = document.createElement("p");
-    p.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
-    usercard.appendChild(p);
+Telegram.WebApp.onEvent("mainButtonClicked", function () {
+    tg.sendData(JSON.stringify(all_cost));
+});
 
-    updateQuantityDisplay();
-    showAddButton();
+let usercard = document.getElementById("usercard");
 
-    Telegram.WebApp.onEvent("mainButtonClicked", function () {
-        tg.sendData(JSON.stringify(all_cost));
-    });
+let p = document.createElement("p");
+
+p.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
+
+usercard.appendChild(p);
