@@ -31,7 +31,7 @@ btn1.addEventListener("click", function () {
 				
                 tg.MainButton.setText(all_cost[0] * 10);
             }
-        });w
+        });
 
         let addButton = document.getElementById(`btn${item}`);
 		if (m1 && all_cost[0]>0){
