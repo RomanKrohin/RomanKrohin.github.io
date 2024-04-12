@@ -26,6 +26,8 @@ btn1.addEventListener("click", function () {
         plusButton.classList.add("plus");
         plusButton.addEventListener("click", function () {
             all_cost[0]++;
+			document.getElementById("quantity1").innerText = all_cost[0]
+			document.getElementById("quantity1") = all_cost[0]
             tg.MainButton.setText(all_cost[0] * 10);
         });
 
@@ -37,6 +39,7 @@ btn1.addEventListener("click", function () {
         minusButton.addEventListener("click", function () {
             if (all_cost[0] > 0) {
                 all_cost[0]--;
+				document.getElementById("quantity1").innerText = all_cost[0]
                 tg.MainButton.setText(all_cost[0] * 10);
             }
         });
@@ -51,7 +54,7 @@ btn1.addEventListener("click", function () {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
-    tg.sendData(item);
+    tg.sendData(JSON.stringify(all_cost));
 });
 
 let usercard = document.getElementById("usercard");
