@@ -53,10 +53,7 @@ btn1.addEventListener("click", function(){
 		all_cost[0]=all_cost[0]+1
 		tg.MainButton.setText(all_cost[0]*10);
 		item = "1";
-		let addButton = document.getElementById(`btn${item}`);
-		addButton.insertAdjacentElement('afterend', plusButton);
-		addButton.insertAdjacentElement('afterend', minusButton);
-
+		addPlusMinusButtons(1);
 		tg.MainButton.show();
 	}
 });
