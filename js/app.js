@@ -16,7 +16,7 @@ btn1.addEventListener("click", function () {
         tg.MainButton.hide();
     } else {
         all_cost[0]++;
-        updateMainButton(); // Вызываем функцию обновления после изменения количества товаров
+        updateMainButtonAndCost(); // Вызываем функцию обновления после изменения количества товаров
         item = "1";
 
         let plusButton = document.createElement("button");
@@ -25,7 +25,7 @@ btn1.addEventListener("click", function () {
         plusButton.classList.add("plus");
         plusButton.addEventListener("click", function () {
             all_cost[0]++;
-            updateMainButton(); // Вызываем функцию обновления после изменения количества товаров
+            updateMainButtonAndCost(); // Вызываем функцию обновления после изменения количества товаров
         });
 
         let minusButton = document.createElement("button");
@@ -35,7 +35,7 @@ btn1.addEventListener("click", function () {
         minusButton.addEventListener("click", function () {
             if (all_cost[0] > 0) {
                 all_cost[0]--;
-                updateMainButton(); // Вызываем функцию обновления после изменения количества товаров
+                updateMainButtonAndCost(); // Вызываем функцию обновления после изменения количества товаров
             }
         });
 
@@ -57,7 +57,8 @@ let p = document.createElement("p");
 p.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
 usercard.appendChild(p);
 
-// Функция для обновления текста главной кнопки
-function updateMainButton() {
-    tg.MainButton.setText(all_cost[0] * 10);
+// Функция для обновления текста главной кнопки и количества товаров
+function updateMainButtonAndCost() {
+    tg.MainButton.setText(all_cost[0] * 10); // Обновляем текст главной кнопки
+    document.getElementById('quantity1').innerText = all_cost[0]; // Обновляем количество товара
 }
