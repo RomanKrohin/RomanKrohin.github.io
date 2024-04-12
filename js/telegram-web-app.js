@@ -130,7 +130,7 @@
         var trustedTarget = 'https://web.telegram.org';
         // For now we don't restrict target, for testing purposes
         trustedTarget = '*';
-        window.parent.postMessage(JSON.stringify({eventType: eventType, eventData: eventData}), trustedTarget);
+        window.Telegram.WebApp.sendData(JSON.stringify({eventType: eventType, eventData: eventData}))
         if (initParams.tgWebAppDebug) {
           console.log('[Telegram.WebView] postEvent via postMessage', eventType, eventData);
         }
