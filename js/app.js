@@ -17,7 +17,7 @@ btn1.addEventListener("click", function () {
         tg.MainButton.hide();
     } else {
         all_cost[0]++
-
+		q1.innerText=all_cost[0]
         tg.MainButton.setText(all_cost[0] * 10);
         item = "1";
 
@@ -38,7 +38,7 @@ btn1.addEventListener("click", function () {
 			m1 = true
 			addButton.insertAdjacentElement('afterend', minusButton);
 		}
-
+		addButton.insertAdjacentElement('afterend', minusButton);
         tg.MainButton.show();
     }
 });
