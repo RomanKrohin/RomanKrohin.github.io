@@ -44,3 +44,15 @@ body {
 .usercard {
 	text-align: center;
 }
+
+/* Добавьте следующие стили в ваш файл cafe.css */
+
+/* Анимация появления и исчезновения кнопок */
+.btn-animate {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-animate.show {
+  opacity: 1;
+}
