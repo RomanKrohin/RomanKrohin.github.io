@@ -16,7 +16,7 @@ btn1.addEventListener("click", function () {
         tg.MainButton.hide();
     } else {
         all_cost[0]++;
-        updateMainButton();
+        updateMainButton(); // Вызываем функцию обновления после изменения количества товаров
         item = "1";
 
         let plusButton = document.createElement("button");
@@ -25,7 +25,7 @@ btn1.addEventListener("click", function () {
         plusButton.classList.add("plus");
         plusButton.addEventListener("click", function () {
             all_cost[0]++;
-            updateMainButton();
+            updateMainButton(); // Вызываем функцию обновления после изменения количества товаров
         });
 
         let minusButton = document.createElement("button");
@@ -35,7 +35,7 @@ btn1.addEventListener("click", function () {
         minusButton.addEventListener("click", function () {
             if (all_cost[0] > 0) {
                 all_cost[0]--;
-                updateMainButton();
+                updateMainButton(); // Вызываем функцию обновления после изменения количества товаров
             }
         });
 
@@ -48,7 +48,7 @@ btn1.addEventListener("click", function () {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
-    tg.sendData(item);
+    tg.sendData(JSON.stringify(all_cost));
 });
 
 let usercard = document.getElementById("usercard");
