@@ -16,7 +16,7 @@ btn1.addEventListener("click", function () {
         tg.MainButton.hide();
     } else {
         all_cost[0] = all_cost[0] + 1;
-
+		btn1.style.display="none"
         tg.MainButton.setText(all_cost[0] * 10);
         item = "1";
         let plusButton = document.createElement("button");
