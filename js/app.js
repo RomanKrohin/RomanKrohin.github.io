@@ -59,6 +59,6 @@ usercard.appendChild(p);
 
 // Функция для обновления текста главной кнопки и количества товаров
 function updateMainButtonAndCost() {
-    tg.MainButton.setText(all_cost[0] * 10); // Обновляем текст главной кнопки
+    tg.MainButton.setText(all_cost.reduce((total, current) => total + current, 0) * 10); // Обновляем текст главной кнопки
     document.getElementById('quantity1').innerText = all_cost[0]; // Обновляем количество товара
 }
