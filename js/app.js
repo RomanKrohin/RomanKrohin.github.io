@@ -6,7 +6,7 @@ tg.expand();
 
 tg.MainButton.textColor = '#FFFFFF';
 tg.MainButton.color = '#2cab37';
-let q1 = document.getElementById(quantity1)
+let q1 = document.getElementById("quantity1")
 let item = "";
 
 let btn1 = document.getElementById("btn1");
