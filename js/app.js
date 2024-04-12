@@ -1,6 +1,6 @@
 let tg = window.Telegram.WebApp;
 
-let all_cost = [0, 0, 0, 0, 0, 0]
+let all_cost = [0, 0, 0, 0, 0, 0];
 
 tg.expand();
 
@@ -16,41 +16,27 @@ btn1.addEventListener("click", function () {
         tg.MainButton.hide();
     } else {
         all_cost[0] = all_cost[0] + 1;
-        tg.MainButton.setText(all_cost[0] * 10);
+        updateQuantity(0, all_cost[0]); // Обновляем количество товара
+        updateMainButton(); // Обновляем текст на главной кнопке
         item = "1";
-		tg.getElementById("quantity1").innerText=123123
-        // Создание кнопки "+"
-        let plusButton = document.createElement("button");
-        plusButton.innerText = "+";
-        plusButton.classList.add("btn");
-        plusButton.classList.add("plus");
-        plusButton.addEventListener("click", function () {
-            all_cost[0]++;
-
-            tg.MainButton.setText(all_cost[0] * 10);
-        });
-
-        // Создание кнопки "-"
-        let minusButton = document.createElement("button");
-        minusButton.innerText = "-";
-        minusButton.classList.add("btn");
-        minusButton.classList.add("minus");
-        minusButton.addEventListener("click", function () {
-            if (all_cost[0] > 0) {
-                all_cost[0]--;
-				document.getElementById("quantity1").innerText = all_cost[0]
-                tg.MainButton.setText(all_cost[0] * 10);
-            }
-        });
-
-        // Добавление кнопок "+" и "-" к элементу DOM
-        let addButton = document.getElementById(`btn${item}`);
-        addButton.insertAdjacentElement('afterend', plusButton);
-        addButton.insertAdjacentElement('afterend', minusButton);
-
         tg.MainButton.show();
     }
 });
+
+// Функция для обновления текста на главной кнопке
+function updateMainButton() {
+    let totalCost = all_cost.reduce((acc, curr) => acc + curr, 0); // Получаем общую стоимость всех товаров
+    tg.MainButton.setText(totalCost * 10); // Устанавливаем текст на главной кнопке
+}
+
+// Функция для обновления количества товара
+function updateQuantity(index, quantity) {
+    let quantityElement = document.getElementById(`quantity${index + 1}`); // Находим элемент, отображающий количество товара
+    if (quantityElement) {
+        quantityElement.innerText = quantity; // Обновляем количество товара
+        tg.sendData(JSON.stringify(all_cost)); // Отправляем данные в Telegram
+    }
+}
 
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
     tg.sendData(JSON.stringify(all_cost));
@@ -59,7 +45,5 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
 let usercard = document.getElementById("usercard");
 
 let p = document.createElement("p");
-
 p.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
-
 usercard.appendChild(p);
