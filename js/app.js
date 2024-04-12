@@ -10,19 +10,27 @@ let q1 = document.getElementById(quantity1)
 let item = "";
 
 let btn1 = document.getElementById("btn1");
-let m1 = false
 
 btn1.addEventListener("click", function () {
     if (tg.MainButton.isVisible) {
         tg.MainButton.hide();
     } else {
-        all_cost[0]++
-		q1.innerText=all_cost[0]
+        all_cost[0] = all_cost[0] + 1;
+
         tg.MainButton.setText(all_cost[0] * 10);
         item = "1";
+        let plusButton = document.createElement("button");
+        plusButton.innerText = "+";
+        plusButton.classList.add("btn");
+        plusButton.classList.add("plus");
+        plusButton.addEventListener("click", function () {
+            all_cost[0]++;
+			q1.innerText=all_cost[0]
+            tg.MainButton.setText(all_cost[0] * 10);
+        });
 
         let minusButton = document.createElement("button");
-        minusButton.innerText = "Del";
+        minusButton.innerText = "-";
         minusButton.classList.add("btn");
         minusButton.classList.add("minus");
         minusButton.addEventListener("click", function () {
@@ -34,11 +42,8 @@ btn1.addEventListener("click", function () {
         });
 
         let addButton = document.getElementById(`btn${item}`);
-		if (!m1 && all_cost[0]>0){
-			m1 = true
-			addButton.insertAdjacentElement('afterend', minusButton);
-		}
-		addButton.insertAdjacentElement('afterend', minusButton);
+        addButton.insertAdjacentElement('afterend', plusButton);
+        addButton.insertAdjacentElement('afterend', minusButton);
         tg.MainButton.show();
     }
 });
