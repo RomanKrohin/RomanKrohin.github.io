@@ -16,7 +16,6 @@ btn1.addEventListener("click", function () {
         tg.MainButton.hide();
     } else {
         all_cost[0] = all_cost[0] + 1;
-
         tg.MainButton.setText(all_cost[0] * 10);
         item = "1";
         let plusButton = document.createElement("button");
@@ -29,6 +28,7 @@ btn1.addEventListener("click", function () {
             tg.MainButton.setText(all_cost[0] * 10);
         });
 
+        // Создание кнопки "-"
         let minusButton = document.createElement("button");
         minusButton.innerText = "-";
         minusButton.classList.add("btn");
@@ -41,9 +41,11 @@ btn1.addEventListener("click", function () {
             }
         });
 
+        // Добавление кнопок "+" и "-" к элементу DOM
         let addButton = document.getElementById(`btn${item}`);
         addButton.insertAdjacentElement('afterend', plusButton);
         addButton.insertAdjacentElement('afterend', minusButton);
+
         tg.MainButton.show();
     }
 });
