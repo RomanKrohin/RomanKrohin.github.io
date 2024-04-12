@@ -17,7 +17,7 @@ btn1.addEventListener("click", function () {
     } else {
         all_cost[0] = all_cost[0] + 1;
         updateQuantity(0, all_cost[0]); // Обновляем количество товара
-        tg.MainButton.setText(all_cost[0] * 10);
+        tg.MainButton.setText(all_cost[0] * 1230);
         item = "1";
         // Создание кнопки "+"
         let plusButton = document.createElement("button");
@@ -27,7 +27,7 @@ btn1.addEventListener("click", function () {
         plusButton.addEventListener("click", function () {
             all_cost[0]++;
             updateQuantity(0, all_cost[0]); // Обновляем количество товара
-            tg.MainButton.setText(all_cost[0] * 10);
+            tg.MainButton.setText(all_cost[0] * 1230);
         });
 
         // Создание кнопки "-"
