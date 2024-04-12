@@ -1,4 +1,4 @@
-// Функция для отрисовки кнопок плюс и минус с анимацией
+// Обновленная функция для отрисовки кнопок плюс и минус с анимацией и отображением количества товаров
 function renderPlusMinusButtons(itemDiv) {
   // Создание кнопки плюс
   let plusButton = document.createElement("button");
@@ -26,9 +26,15 @@ function renderPlusMinusButtons(itemDiv) {
       }
   });
 
-  // Добавление кнопок в div для товара
+  // Создание элемента для отображения количества товара
+  let quantityElement = document.createElement("div");
+  quantityElement.classList.add("quantity");
+  quantityElement.innerText = "0";
+
+  // Добавление кнопок и элемента количества в div для товара
   itemDiv.appendChild(plusButton);
   itemDiv.appendChild(minusButton);
+  itemDiv.appendChild(quantityElement);
 }
 
 // Добавление обработчиков событий для кнопок Add
@@ -38,7 +44,7 @@ addButtons.forEach(function(button) {
       let itemDiv = this.parentNode;
       // Удаление кнопки Add
       itemDiv.removeChild(button);
-      // Отрисовка кнопок плюс и минус с анимацией
+      // Отрисовка кнопок плюс и минус с анимацией и элемента количества
       renderPlusMinusButtons(itemDiv);
       // Увеличение счетчика товара
       itemCount++;
