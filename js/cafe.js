@@ -1,74 +1,53 @@
-let itemCounts = {}; // Объект для хранения количества каждого товара
-
-// Обновленная функция для отрисовки кнопок плюс и минус с анимацией и отображением количества товаров
-function renderPlusMinusButtons(itemDiv, itemId) {
-    // Создание кнопки плюс
-    let plusButton = document.createElement("button");
-    plusButton.innerText = "+";
-    plusButton.classList.add("btn");
-    plusButton.classList.add("plus");
-    plusButton.classList.add("btn-animate"); // Добавление класса анимации
-    plusButton.classList.add("show"); // Добавление класса для показа кнопки с анимацией
-    plusButton.addEventListener("click", function() {
-        itemCounts[itemId]++;
-        updateItemCount(itemDiv, itemId);
-    });
-
-    // Создание кнопки минус
-    let minusButton = document.createElement("button");
-    minusButton.innerText = "-";
-    minusButton.classList.add("btn");
-    minusButton.classList.add("minus");
-    minusButton.classList.add("btn-animate"); // Добавление класса анимации
-    minusButton.classList.add("show"); // Добавление класса для показа кнопки с анимацией
-    minusButton.addEventListener("click", function() {
-        if (itemCounts[itemId] > 0) {
-            itemCounts[itemId]--;
-            updateItemCount(itemDiv, itemId);
-        }
-    });
-
-    // Создание элемента для отображения количества товара
-    let quantityElement = document.createElement("div");
-    quantityElement.classList.add("quantity");
-    quantityElement.innerText = itemCounts[itemId];
-
-    // Добавление кнопок и элемента количества в div для товара
-    itemDiv.appendChild(plusButton);
-    itemDiv.appendChild(minusButton);
-    itemDiv.appendChild(quantityElement);
-}
-
-// Добавление обработчиков событий для кнопок Add
+// Добавляем обработчик события для каждой кнопки "Add"
 let addButtons = document.querySelectorAll(".btn");
-addButtons.forEach(function(button) {
+addButtons.forEach(function(button, index) {
+    let quantityElement = document.getElementById(`quantity${index + 1}`);
+    let quantity = 0; // Изначальное количество товара
+
     button.addEventListener("click", function() {
-        let itemDiv = this.parentNode;
-        let itemId = itemDiv.id; // Получение идентификатора товара
-        // Удаление кнопки Add
-        itemDiv.removeChild(button);
-        // Проверка наличия счетчика для данного товара
-        if (!itemCounts[itemId]) {
-            itemCounts[itemId] = 0;
-        }
-        // Отрисовка кнопок плюс и минус с анимацией и элемента количества
-        renderPlusMinusButtons(itemDiv, itemId);
-        // Увеличение счетчика товара
-        itemCounts[itemId]++;
-        updateItemCount(itemDiv, itemId);
+        // При нажатии увеличиваем количество товара на 1
+        quantity++;
+        // Обновляем отображение количества товара
+        quantityElement.innerText = quantity;
+
+        // Создаем кнопку "+"
+        let plusButton = document.createElement("button");
+        plusButton.innerText = "+";
+        plusButton.classList.add("btn");
+        plusButton.classList.add("plus");
+        plusButton.classList.add("btn-animate"); // Анимация
+        plusButton.classList.add("show"); // Показываем кнопку с анимацией
+        plusButton.addEventListener("click", function() {
+            // При нажатии на кнопку "+" увеличиваем количество товара на 1
+            quantity++;
+            // Обновляем отображение количества товара
+            quantityElement.innerText = quantity;
+        });
+
+        // Создаем кнопку "-"
+        let minusButton = document.createElement("button");
+        minusButton.innerText = "-";
+        minusButton.classList.add("btn");
+        minusButton.classList.add("minus");
+        minusButton.classList.add("btn-animate"); // Анимация
+        minusButton.classList.add("show"); // Показываем кнопку с анимацией
+        minusButton.addEventListener("click", function() {
+            // При нажатии на кнопку "-" уменьшаем количество товара на 1, если оно больше 0
+            if (quantity > 0) {
+                quantity--;
+                // Обновляем отображение количества товара
+                quantityElement.innerText = quantity;
+            }
+
+            // Если количество стало равным 0, скрываем кнопки "+", "-"
+            if (quantity === 0) {
+                plusButton.classList.remove("show");
+                minusButton.classList.remove("show");
+            }
+        });
+
+        // Добавляем кнопки "+" и "-" к элементу с товаром
+        button.parentNode.appendChild(plusButton);
+        button.parentNode.appendChild(minusButton);
     });
 });
-
-// Функция для обновления количества товаров
-function updateItemCount(itemDiv, itemId) {
-    // Находим элемент с количеством товаров для данного товара
-    let quantityElement = itemDiv.querySelector(`#${itemId} .quantity`);
-    // Обновляем отображение количества
-    quantityElement.innerText = itemCounts[itemId];
-    // Если количество товара больше нуля, отображаем элемент с количеством, иначе скрываем
-    if (itemCounts[itemId] > 0) {
-        quantityElement.style.display = "block";
-    } else {
-        quantityElement.style.display = "none";
-    }
-}
