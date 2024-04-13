@@ -56,3 +56,80 @@ body {
 .btn-animate.show {
   opacity: 1;
 }
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для меню */
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.btn {
+    background-color: #2cab37;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quantity {
+    margin-right: 10px;
+}
+
+/* Стили для формы заказа */
+#order-final {
+    display: none;
+    margin-top: 20px;
+}
+
+#order-list {
+    margin-bottom: 10px;
+}
+
+#tel,
+#email {
+    width: calc(50% - 5px);
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Стили для кнопок возврата */
+#return-to-menu {
+    background-color: #ff4500;
+    margin-right: 10px;
+}
+
+#return-to-menu,
+#return-to-checkout {
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
