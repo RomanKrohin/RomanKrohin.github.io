@@ -72,7 +72,7 @@ btn2.addEventListener("click", function () {
 	if (!m2 && all_cost[1]>0){
 		m2= true
 		let minusButton = document.createElement("button");
-		minusButton.innerText = "del";
+		minusButton.innerText = "Del";
 		minusButton.classList.add("btn");
 		minusButton.classList.add("minus");
 		minusButton.addEventListener("click", function () {
@@ -105,7 +105,7 @@ btn3.addEventListener("click", function () {
 	if (!m3 && all_cost[2]>0){
 		m3= true
 		let minusButton = document.createElement("button");
-		minusButton.innerText = "del";
+		minusButton.innerText = "Del";
 		minusButton.classList.add("btn");
 		minusButton.classList.add("minus");
 		minusButton.addEventListener("click", function () {
