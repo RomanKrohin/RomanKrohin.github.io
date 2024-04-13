@@ -45,7 +45,7 @@ html.dark body {
     align-items: center;
     flex-direction: column; /* Располагаем элементы товара в столбик */
     text-align: center; /* Выравниваем по центру */
-    margin-bottom: 20px; /* Увеличиваем отступ между товарами */
+    margin-bottom: 25px; /* Увеличиваем отступ между товарами */
 }
 
 .img {
