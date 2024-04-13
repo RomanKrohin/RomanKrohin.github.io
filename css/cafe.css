@@ -4,19 +4,17 @@ body {
     font-size: 13px;
     line-height: 16px;
     font-weight: 400;
-    background-color: var(--block-bg-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    width: 1px;
-    min-width: 100%;
+    width: 100%; /* Ширина равна ширине экрана */
     user-select: none;
     cursor: default;
 }
 
 html.dark body {
     background-color: #0f0f0f;
-    color: #fff;
+
 }
 
 body.order-mode {
@@ -32,40 +30,39 @@ body.order-mode {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: transparent; /* Прозрачный фон контейнера */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* Убираем тень */
 }
 
 .inner {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column; /* Располагаем товары в столбик */
+    align-items: center; /* Выравниваем по центру */
 }
 
 .item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Увеличиваем расстояние между товарами */
+    text-align: center; /* Выравниваем текст по центру */
 }
 
 .img {
-    width: 50px;
+    width: 100px; /* Увеличиваем размер изображений */
     height: auto;
-    margin-right: 10px;
+    margin-bottom: 10px; /* Увеличиваем отступ снизу изображений */
 }
 
 .btn {
     background-color: rgb(248, 168, 24);
     color: #fff;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px; /* Увеличиваем размер кнопок */
     border-radius: 5px;
     cursor: pointer;
 }
 
 .quantity {
-    margin-right: 10px;
+    margin-top: 5px; /* Увеличиваем отступ над количеством */
 }
 
 /* Стили для формы заказа */
@@ -75,27 +72,21 @@ body.order-mode {
 }
 
 #order-list {
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Увеличиваем расстояние до формы заказа */
 }
 
 #tel,
 #email {
-    width: calc(50% - 5px);
+    width: calc(100% - 20px); /* Ширина равна ширине контейнера с отступами */
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    box-sizing: border-box; /* Учитываем внешние отступы */
 }
 
-/* Стили для кнопок возврата */
+/* Стили для кнопки возврата */
 #return-to-menu {
     background-color: #ff4500;
-    margin-right: 10px;
+    margin-right: 0; /* Убираем правый отступ */
 }
-
-.usercard {
-    /* Дополнительные стили для usercard */
-}
-
-/* Дополнительные стили для Telegram WebApp */
-/* Здесь могут быть стили для элементов Telegram WebApp, если они предусмотрены */
