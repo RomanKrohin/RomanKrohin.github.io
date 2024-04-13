@@ -10,15 +10,13 @@ body {
     min-width: 100%;
     user-select: none;
     cursor: default;
+    background-color: #0f0f0f; /* Темный цвет Телеграма */
+    color: #fff; /* Белый цвет текста */
 }
 
 html.dark body {
     background-color: #0f0f0f;
     color: #fff;
-}
-
-body.order-mode {
-    background-color: var(--bg-color);
 }
 
 * {
@@ -27,12 +25,13 @@ body.order-mode {
 
 /* Стили для контейнера меню */
 .container {
-    max-width: 600px;
+    max-width: 100px;
     margin: 0 auto; /* Центрируем контейнер по горизонтали */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center; /* Выравниваем содержимое по центру */
+	align-items: center; /* Выравниваем содержимое по центру */
 }
 
 .inner {
@@ -69,11 +68,6 @@ body.order-mode {
     color: #fff; /* Белый цвет текста количества */
     margin-right: 10px;
     display: inline-block; /* Делаем отображение inline */
-    visibility: hidden; /* Скрываем количество, если равно 0 */
-}
-
-.item:hover .quantity {
-    visibility: visible; /* Отображаем количество при наведении */
 }
 
 /* Стили для формы заказа */
