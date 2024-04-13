@@ -1,5 +1,5 @@
 document.getElementById("order-final").style.display="none"
-
+let return_to_menu_button = document.getElementById("return-to-menu")
 let order_list = document.getElementById("order-list")
 let tg = window.Telegram.WebApp;
 
@@ -145,6 +145,13 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
 	else{
 		tg.sendData(JSON.stringify(all_cost));
 	}
+});
+
+return_to_menu_button.addEventListener("click", function () {
+	document.getElementById("menu").style.display="block"
+		document.getElementById("order-final").style.display="none"
+		tg.MainButton.setText(all_cost[0] * 10+all_cost[1]*20+all_cost[2]*30)
+		flag=0
 });
 
 
