@@ -1,3 +1,6 @@
+document.getElementById("order-final").style.display="none"
+
+let order_list = document.getElementById("order-list")
 let tg = window.Telegram.WebApp;
 
 let all_cost = [0, 0, 0, 0, 0, 0];
@@ -9,6 +12,8 @@ tg.MainButton.color = '#2cab37';
 let m1 = false;
 let m2 = false;
 let m3 = false;
+flag= 0
+
 
 let item = "";
 
@@ -125,8 +130,21 @@ btn3.addEventListener("click", function () {
 	tg.MainButton.show();
 });
 
+function displayOrder(){
+	order_list.innerText = `Cake - ${all_cost[0]}, Coke - ${all_cost[1]}, Burger -${all_cost[2]}`
+}
+
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
-    tg.sendData(JSON.stringify(all_cost));
+	if (flag==0){
+		document.getElementById("menu").style.display="none"
+		document.getElementById("order-final").style.display="block"
+		displayOrder()
+		tg.MainButton.setText("Заказать")
+		flag=1
+	}
+	else{
+		tg.sendData(JSON.stringify(all_cost));
+	}
 });
 
 
