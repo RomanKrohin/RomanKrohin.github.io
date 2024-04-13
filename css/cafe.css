@@ -34,6 +34,7 @@ body.order-mode {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Добавляем белый фон контейнера */
 }
 
 .inner {
@@ -45,13 +46,15 @@ body.order-mode {
 .item {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    flex-direction: column; /* Располагаем элементы товара в столбик */
+    text-align: center; /* Выравниваем по центру */
+    margin-bottom: 20px; /* Увеличиваем отступ между товарами */
 }
 
 .img {
-    width: 50px;
+    width: 80px; /* Увеличиваем размер изображений */
     height: auto;
-    margin-right: 10px;
+    margin-bottom: 10px; /* Увеличиваем отступ снизу изображений */
 }
 
 .btn {
@@ -61,20 +64,30 @@ body.order-mode {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px; /* Увеличиваем отступ над кнопками */
 }
 
 .quantity {
+    color: #fff; /* Белый цвет текста количества */
     margin-right: 10px;
+    display: inline-block; /* Делаем отображение inline */
+    visibility: hidden; /* Скрываем количество, если равно 0 */
+}
+
+.item:hover .quantity {
+    visibility: visible; /* Отображаем количество при наведении */
 }
 
 /* Стили для формы заказа */
 #order-final {
     display: none;
     margin-top: 20px;
+    color: #fff; /* Белый цвет текста в форме заказа */
 }
 
 #order-list {
     margin-bottom: 10px;
+    color: #fff; /* Белый цвет текста списка заказов */
 }
 
 #tel,
@@ -98,3 +111,9 @@ body.order-mode {
 
 /* Дополнительные стили для Telegram WebApp */
 /* Здесь могут быть стили для элементов Telegram WebApp, если они предусмотрены */
+.quantity {
+    color: #fff; /* Белый цвет текста счетчика */
+    margin-right: 10px;
+    display: inline-block; /* Делаем отображение inline */
+
+}

@@ -39,7 +39,7 @@ btn1.addEventListener("click", function () {
         if (!m1 && all_cost[0]>0){
 			m1= true
 			let minusButton = document.createElement("button");
-			minusButton.innerText = "del";
+			minusButton.innerText = "Del";
 			minusButton.classList.add("btn");
 			minusButton.classList.add("minus");
 			minusButton.addEventListener("click", function () {
