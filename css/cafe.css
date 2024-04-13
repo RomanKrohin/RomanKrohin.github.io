@@ -4,8 +4,6 @@ body {
     font-size: 13px;
     line-height: 16px;
     font-weight: 400;
-    background-color: var(--block-bg-color);
-    color: var(--text-color);
     margin: 0;
     padding: 0;
     width: 1px;
