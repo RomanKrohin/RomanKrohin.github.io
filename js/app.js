@@ -30,7 +30,6 @@ btn1.addEventListener("click", function () {
         all_cost[0] = all_cost[0] + 1;
 		checkMainButton();
         updateQuantity(0, all_cost[0]);
-        tg.MainButton.setText(all_cost[0] * 10+all_cost[1]*20+all_cost[2]*30);
         item = "1";
         if (!m1 && all_cost[0]>0){
 			m1= true
@@ -64,7 +63,6 @@ btn2.addEventListener("click", function () {
 	all_cost[1] = all_cost[1] + 1;
 	checkMainButton();
 	updateQuantity(1, all_cost[1]);
-	tg.MainButton.setText(all_cost[1] * 20);
 	item = "2";
 	if (!m2 && all_cost[1]>0){
 		m2= true
@@ -98,7 +96,6 @@ btn3.addEventListener("click", function () {
 	all_cost[2] = all_cost[2] + 1;
 	checkMainButton();
 	updateQuantity(2, all_cost[2]);
-	tg.MainButton.setText(all_cost[2] * 10+all_cost[2]*20+all_cost[2]*30);
 	item = "3";
 	if (!m3 && all_cost[2]>0){
 		m3= true
@@ -132,11 +129,6 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
     tg.sendData(JSON.stringify(all_cost));
 });
 
-let usercard = document.getElementById("usercard");
-
-let p = document.createElement("p");
-p.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
-usercard.appendChild(p);
 
 function updateQuantity(index, quantity) {
     let quantityElement = document.getElementById(`quantity${index + 1}`);
