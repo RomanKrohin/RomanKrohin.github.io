@@ -12,7 +12,7 @@ let item = "";
 
 let btn1 = document.getElementById("btn1");
 
-function checkMainMutton(){
+function checkMainButton(){
 	if (all_cost[0]>0){
 		tg.MainButton.setText(all_cost[0] * 10)
 	}
@@ -23,8 +23,8 @@ function checkMainMutton(){
 
 
 btn1.addEventListener("click", function () {
-
         all_cost[0] = all_cost[0] + 1;
+		checkMainButton();
         updateQuantity(0, all_cost[0]);
         tg.MainButton.setText(all_cost[0] * 10);
         item = "1";
@@ -37,6 +37,7 @@ btn1.addEventListener("click", function () {
 			minusButton.addEventListener("click", function () {
 				if (all_cost[0] > 0) {
 					all_cost[0]--;
+					checkMainButton();
 					updateQuantity(0, all_cost[0]);
 					tg.MainButton.setText(all_cost[0] * 10);
 					if (all_cost[0]==0){
