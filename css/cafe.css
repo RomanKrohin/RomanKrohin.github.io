@@ -30,11 +30,11 @@ body.order-mode {
 /* Стили для контейнера меню */
 .container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto; /* Центрируем контейнер по горизонтали */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* Добавляем белый фон контейнера */
+    text-align: center; /* Выравниваем содержимое по центру */
 }
 
 .inner {
