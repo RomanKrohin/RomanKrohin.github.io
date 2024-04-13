@@ -161,3 +161,10 @@ function updateQuantity(index, quantity) {
         quantityElement.innerText = quantity;
     }
 }
+
+document.getElementById("return-to-checkout").addEventListener("click", function(){
+	document.getElementById("menu").style.display="none"
+	document.getElementById("order-final").style.display="block" 
+	tg.MainButton.setText(all_cost[0] * 10+all_cost[1]*20+all_cost[2]*30)
+	flag=1
+})
